@@ -23,9 +23,19 @@ return galleryItems.map(({preview, original, description}) =>{
 gallery.addEventListener("click", magnification);
 function magnification(evt){
   evt.preventDefault();
+  if (evt.target.nodeName !== "IMG") {
+    return;
+  }
   const magnifiedImage = basicLightbox.create(`
   <img src="${evt.target.dataset.source}">
 `)
- console.log(evt.target);
 magnifiedImage.show();
+window.addEventListener("keydown", closeEsc);
+function closeEsc(event){
+  console.log(event.code);
+  if (event.code === 'Escape'){
+    window.removeEventListener("keydown", closeEsc)
+    magnifiedImage.close();
+  }
+}
 }
