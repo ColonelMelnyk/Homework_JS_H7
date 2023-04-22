@@ -21,6 +21,11 @@ return galleryItems.map(({preview, original, description}) =>{
 
 }
 gallery.addEventListener("click", magnification);
-function magnification(){
-
+function magnification(evt){
+  evt.preventDefault();
+  const magnifiedImage = basicLightbox.create(`
+  <img src="${evt.target.dataset.source}">
+`)
+ console.log(evt.target);
+magnifiedImage.show();
 }
