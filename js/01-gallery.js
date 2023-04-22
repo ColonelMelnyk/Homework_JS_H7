@@ -31,9 +31,9 @@ function magnification(evt){
 `)
 magnifiedImage.show();
 window.addEventListener("keydown", closeEsc);
-function closeEsc(event){
-  console.log(event.code);
-  if (event.code === 'Escape'){
+function closeEsc(evt){
+  console.log(evt.code);
+  if (evt.code === 'Escape'){
     window.removeEventListener("keydown", closeEsc)
     magnifiedImage.close();
   }
